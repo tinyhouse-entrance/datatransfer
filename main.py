@@ -13,13 +13,11 @@ class Users(Resource):
         print(data)
         return {'data': data}, 200  # return data and 200 OK code
     
-    def post(self):
-        parser = reqparse.RequestParser()  # initialize
-        
+     def post(self):
+        parser = reqparse.RequestParser()  # initialize     
         parser.add_argument('userId', required=True)  # add args
         parser.add_argument('name', required=True)
-        parser.add_argument('city', required=True)
-        
+        parser.add_argument('city', required=True)       
         args = parser.parse_args()  # parse arguments to dictionary
         
         # create new dataframe containing new values
@@ -27,24 +25,10 @@ class Users(Resource):
             'userId': args['userId'],
             'name': args['name'],
             'city': args['city'],
-            'locations': args['locations']
+            'locations': [[]]
         })
         # read our CSV
         data = pd.read_csv('users.csv')
-        
-        if args['userId'] in list(data['userId']):
-            return {
-                'message': f"'{args['userId']}' already exists."
-            }, 401
-        else:
-            # create new dataframe containing new values
-            new_data = pd.DataFrame({
-                'userId': args['userId'],
-                'name': args['name'],
-                'city': args['city'],
-                'locations': [[]]
-            })
-
         # add the newly provided values
         data = data.append(new_data, ignore_index=True)
         # save back to CSV
