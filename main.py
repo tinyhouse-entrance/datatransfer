@@ -13,7 +13,7 @@ class Users(Resource):
         print(data)
         return {'data': data}, 200  # return data and 200 OK code
     
-     def post(self):
+    def post(self):
         parser = reqparse.RequestParser()  # initialize     
         parser.add_argument('userId', required=True)  # add args
         parser.add_argument('name', required=True)
