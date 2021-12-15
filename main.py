@@ -42,7 +42,7 @@ class Users(Resource):
                 'userId': args['userId'],
                 'name': args['name'],
                 'city': args['city'],
-                'locations': args['locations']
+                'locations': [[]]
             })
 
         # add the newly provided values
