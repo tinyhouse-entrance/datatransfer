@@ -1,0 +1,14 @@
+(.venv) PS C:\Users\saruy\Documents\YouTube_To_MP3_app> 
+    .venv\scripts\activate
+(.venv) PS C:\Users\saruy\Documents\YouTube_To_MP3_app> 
+    deactivate
+
+    pip install Pillow
+
+
+python -m venv .venv
+& C:/Users/saruy/AppData/Local/Programs/Python/Python310/python.exe -m venv .venv
+
+{
+    "python.envFile": "C:/Users/saruy/Documents/DigtialTwin_v2/.venv"
+}
