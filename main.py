@@ -32,6 +32,7 @@ class Users(Resource):
         # add the newly provided values
         data = data.append(new_data, ignore_index=True)
         # save back to CSV
+        print(data)
         data.to_csv('users.csv', index=False)
         return {'data': data.to_dict()}, 200  # return data with 200 OK
 
