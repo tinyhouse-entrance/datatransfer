@@ -1,1 +1,1 @@
-web: gunicorn --bind tinyhouse-data.herokuapp.com main:app
+web: gunicorn --bind https://tinyhouse-data.herokuapp.com main:app
