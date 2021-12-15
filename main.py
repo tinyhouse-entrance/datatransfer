@@ -4,6 +4,7 @@ import pandas as pd
 import ast
 app = Flask(__name__)
 api = Api(app)
+app.route('/')
 
 class Users(Resource):
     def get(self):
