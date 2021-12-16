@@ -10,14 +10,7 @@ import psycopg2
 app = Flask(__name__)
 api = Api(app)
 app.route('/')
-query2 = "SELECT * FROM parts;"
-DATABASE_URL = ' '
 #endregion variables
-
-#region database connection
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-#endregion database connection
-
 
 class Data(Resource):
 
