@@ -105,8 +105,6 @@ class TinyHouseData(Resource):
         #print(data)
         return {'data': data}, 200  # return data and 200 OK code
 
-
-
 api.add_resource(Data, '/data')  #: '/data' is our entry point
 api.add_resource(TinyHouseData,'/tinyhousedata')
 
