@@ -48,7 +48,7 @@ class Data(Resource):
         args = parser.parse_args()  # parse arguments to dictionary
 
         # read our CSV
-        data = pd.read_csv('users.csv')
+        data = pd.read_csv('data.csv')
         
         if args['userId'] in list(data['userId']):
             # evaluate strings of lists to lists
@@ -59,7 +59,7 @@ class Data(Resource):
             user_data['locations'] = args['locations']
             print(args['locations'])
             # save back to CSV
-            data.to_csv('users.csv', index=False)
+            data.to_csv('data.csv', index=False)
             # return data and 200 OK
             return {'data': data.to_dict()}, 200
 
