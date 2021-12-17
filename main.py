@@ -12,7 +12,6 @@ api = Api(app)
 app.route('/')
 #endregion variables
 
-
 class Data(Resource):
 
     def post(self):
@@ -107,7 +106,6 @@ class TinyHouseData(Resource):
 
 api.add_resource(Data, '/data')  #: '/data' is our entry point
 api.add_resource(TinyHouseData,'/tinyhousedata')
-
 
 if __name__ == '__main__':
     app.run()  # run our Flask app
