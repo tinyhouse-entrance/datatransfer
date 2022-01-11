@@ -28,7 +28,7 @@ class Data(Resource):
 
         # create new dataframe containing new values
         new_data = pd.DataFrame({
-            'timestamp': args['timestamp'],
+            'timestamp': [args['timestamp']],
             't1': [args['t1']],
             't2': [args['t2']],
             't3': [args['t3']],
