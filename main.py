@@ -42,7 +42,7 @@ class Data(Resource):
         # add the newly provided values
         data = data.append(new_data, ignore_index=True)
         # save back to CSV
-        #data.to_csv('data.csv', index=False)
+        data.to_csv('data.csv', index=False)
         return {'data': data.to_dict()}, 200  # return data with 200 OK
         
     def put(self):
