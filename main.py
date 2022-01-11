@@ -21,7 +21,9 @@ class Data(Resource):
         parser.add_argument('t2', required=True)
         parser.add_argument('t3', required=True)
         parser.add_argument('t4', required=True)
-        parser.add_argument('co2', required=True)       
+        parser.add_argument('t5', required=True)   
+        parser.add_argument('ct', required=True)  
+        parser.add_argument('ps', required=True)      
         args = parser.parse_args()  # parse arguments to dictionary
 
         # create new dataframe containing new values
@@ -31,14 +33,16 @@ class Data(Resource):
             't2': [args['t2']],
             't3': [args['t3']],
             't4': [args['t4']],
-            'co2': [args['co2']]          
+            't5': [args['t5']],    
+            'ct': [args['ct']], 
+            'ps': [args['ps']]         
         })
         # read our CSV
         data = pd.read_csv('data.csv')
         # add the newly provided values
         data = data.append(new_data, ignore_index=True)
         # save back to CSV
-        data.to_csv('data.csv', index=False)
+        #data.to_csv('data.csv', index=False)
         return {'data': data.to_dict()}, 200  # return data with 200 OK
         
     def put(self):
@@ -48,7 +52,9 @@ class Data(Resource):
         parser.add_argument('t2', required=True)
         parser.add_argument('t3', required=True)
         parser.add_argument('t4', required=True)
-        parser.add_argument('co2', required=True)      
+        parser.add_argument('t5', required=True)   
+        parser.add_argument('ct', required=True)  
+        parser.add_argument('ps', required=True)       
         args = parser.parse_args()  # parse arguments to dictionary
 
         # read our CSV
@@ -60,7 +66,9 @@ class Data(Resource):
         data['t2'] = args['t2']
         data['t3'] = args['t3']
         data['t4'] = args['t4']
-        data['co2'] = args['co2']
+        data['t5'] = args['t5']   
+        data['ct'] = args['ct'] 
+        data['ps'] = args['ps'] 
             # save back to CSV
         data.to_csv('data.csv', index=False)
             # return data and 200 OK
@@ -80,7 +88,9 @@ class TinyHouseData(Resource):
         parser.add_argument('t2', required=True)
         parser.add_argument('t3', required=True)
         parser.add_argument('t4', required=True)
-        parser.add_argument('co2', required=True)      
+        parser.add_argument('t5', required=True)   
+        parser.add_argument('ct', required=True)  
+        parser.add_argument('ps', required=True)       
         args = parser.parse_args()  # parse arguments to dictionary
 
         # read our CSV
@@ -92,7 +102,9 @@ class TinyHouseData(Resource):
         data['t2'] = args['t2']
         data['t3'] = args['t3']
         data['t4'] = args['t4']
-        data['co2'] = args['co2']
+        data['t5'] = args['t5']   
+        data['ct'] = args['ct'] 
+        data['ps'] = args['ps'] 
             # save back to CSV
         data.to_csv('tinydata.csv', index=False)
             # return data and 200 OK
@@ -103,6 +115,8 @@ class TinyHouseData(Resource):
         data = data.to_dict()  # convert dataframe to dictionary
         #print(data)
         return {'data': data}, 200  # return data and 200 OK code
+
+
 
 api.add_resource(Data, '/data')  #: '/data' is our entry point
 api.add_resource(TinyHouseData,'/tinyhousedata')
