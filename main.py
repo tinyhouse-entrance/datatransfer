@@ -29,7 +29,8 @@ class Data(Resource):
         parser.add_argument('t4', required=True)
         parser.add_argument('t5', required=True)   
         parser.add_argument('ct', required=True)  
-        parser.add_argument('ps', required=True)      
+        parser.add_argument('t6', required=True)  
+        parser.add_argument('source', required=True)   
         args = parser.parse_args()  # parse arguments to dictionary
 
         # create new dataframe containing new values
