@@ -96,7 +96,7 @@ class TinyHouseData(Resource):
         parser.add_argument('t4', required=True)
         parser.add_argument('t5', required=True)   
         parser.add_argument('ct', required=True)  
-        parser.add_argument('ps', required=True)       
+        parser.add_argument('t6', required=True)       
         args = parser.parse_args()  # parse arguments to dictionary
 
         # read our CSV
@@ -110,7 +110,8 @@ class TinyHouseData(Resource):
         data['t4'] = args['t4']
         data['t5'] = args['t5']   
         data['ct'] = args['ct'] 
-        data['ps'] = args['ps'] 
+        data['t6'] = args['t6'] 
+        data['source'] = args['source'] 
             # save back to CSV
         data.to_csv('tinydata.csv', index=False)
             # return data and 200 OK
@@ -118,8 +119,8 @@ class TinyHouseData(Resource):
             q_data = query.format(args['timestamp'],args['t1'],args['t2'],args['t3'],args['t4'],args['t5'],args['ct'],args['t6'],args['source'])
             cur.execute(q_data)
             conn.commit()
-        except:
-            print("error")
+        except Exception as e:
+            print(e)
         return {'data': data.to_dict()}, 200
 
     def get(self):
