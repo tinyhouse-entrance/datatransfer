@@ -10,6 +10,12 @@ import psycopg2
 app = Flask(__name__)
 api = Api(app)
 app.route('/')
+
+DATABASE_URL = 'postgres://whheiyecnfjvze:e54c8491ffe0b37679db8a943fe672d876f440a3936d04724e7f0b82b7df9b6f@ec2-54-229-68-88.eu-west-1.compute.amazonaws.com:5432/dekdht4ds841en'
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+cur = conn.cursor()
+query = "INSERT INTO tinyhousedata(timestamp,t1,t2,t3,t4,t5,ct1,ps,source) VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}');"
+
 #endregion variables
 
 class Data(Resource):
@@ -108,6 +114,12 @@ class TinyHouseData(Resource):
             # save back to CSV
         data.to_csv('tinydata.csv', index=False)
             # return data and 200 OK
+        try:
+            q_data = query.format(args['timestamp'],args['t1'],args['t2'],args['t3'],args['t4'],args['t5'],args['ct'],args['t6'],args['source'])
+            cur.execute(q_data)
+            conn.commit()
+        except:
+            print("error")
         return {'data': data.to_dict()}, 200
 
     def get(self):
